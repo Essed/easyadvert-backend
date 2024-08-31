@@ -5,9 +5,17 @@ from app.api.announcement import announcement_router
 from app.api.login import login_router
 from app.api.device import device_router
 from fastapi.routing import APIRouter
+from fastapi.middleware.cors import CORSMiddleware
 
 
-app = FastAPI()
+app = FastAPI(title = "EasyAdvert")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = ['*'],
+    allow_credentials = True,
+    allow_methods = ['*'],
+    allow_headers = ['*']
+)
 
 app_router = APIRouter()
 
